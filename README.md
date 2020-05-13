@@ -1,5 +1,27 @@
 # CacheOptimization-Arch2
+instructions to run the following file:
+1.Download Ubuntu subsystem through MicrosoftWindowsStore or any GCC compiler.
+
+
+2.use the following Commands through ubuntu:
+
+cd /
+
+
+cd mnt 
+
+
+cd dir
+
+
+g++ cache.cpp -o cache
+
+
+./cache
+
+
 This was a Computer Architecture 2 Homework based on CacheOptimization where we were given the following PDF:
+
 <p align="justify">
 
 # An-Najah	National	University
