@@ -26,7 +26,7 @@ function for that.
 
 3 - Define a new function called **mat_mat_blocked** in which you will implement the blocking
 optimization. Make sure to verify the correctness of the output of this function as above. Experiment
-with more than one block size (try 1 6, 32 and 64 for example).
+with more than one block size (try 16, 32 and 64 for example).
 
 4 - Define a new function called **mat_mat_blocked_interchanged()** in which you will implement both
 of the previous optimizations at the same time. Don’t forget to verify the correctness of the output.
