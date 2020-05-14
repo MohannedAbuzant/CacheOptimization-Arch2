@@ -7,13 +7,14 @@
 #define DATA float
 
 
-const int SIZE  = 1024  ;
+const int SIZE  = 512  ;
 
 DATA A[SIZE][SIZE] ;
 DATA B[SIZE][SIZE] ;
 DATA C[SIZE][SIZE] ;
 DATA C2[SIZE][SIZE] ;
 DATA C3[SIZE][SIZE] ;
+DATA C4[SIZE][SIZE];
 
 double seconds()
 {
@@ -85,7 +86,7 @@ void mat_mat_interchanged(DATA A[SIZE][SIZE], DATA B[SIZE][SIZE],DATA C[SIZE][SI
 
 void mat_mat_blocked(DATA A[SIZE][SIZE], DATA B[SIZE][SIZE],DATA C[SIZE][SIZE]) 
 {
-    int  n = 16 ;
+    int  n = 64 ;
     for (int k = 0; k < SIZE; k+=n) {
         for (int i = 0; i < SIZE; i+=n) {
             for (int j = 0; j < SIZE; j+=n) {
@@ -106,6 +107,23 @@ void mat_mat_blocked(DATA A[SIZE][SIZE], DATA B[SIZE][SIZE],DATA C[SIZE][SIZE])
 
 void mat_mat_blocked_interchanged(DATA A[SIZE][SIZE], DATA B[SIZE][SIZE],DATA C[SIZE][SIZE]) 
 {
+    int  n = 64;
+    for (int k = 0; k < SIZE; k += n) {
+        for (int i = 0; i < SIZE; i += n) {
+            for (int j = 0; j < SIZE; j += n) {
+                for (int k1 = k; k1 < k + n; k1++) {
+                    for (int i1 = i; i1 < i + n; i1++) {
+                        for (int j1 = j; j1 < j + n; j1++) {
+                            C[i1][j1] += A[i1][k1] * B[k1][j1];
+
+                        }
+
+                    }
+                }
+
+            }
+        }
+    }
 
 }
 
@@ -153,17 +171,17 @@ int main()
     printf("verification:%d\n",compare(C,C3));
 
 
-/*    
+   
      before = seconds();
 
-    mat_mat_blocked_opt(...,C4);
+     mat_mat_blocked_interchanged(A,B,C4);
 
     after = seconds();
 
     printf("Blocked Interchanged Time:%f\n",after-before);
 
     printf("verification:%d\n",compare(C,C4));
-*/
+
 
     return 0;
 }
